@@ -1,0 +1,90 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Character {
+  id String @id @default(uuid())
+
+  playerName String? @map("player_name")
+  name       String
+
+  currentHitPoints    Int? @map("current_hit_points")
+  maxHitPoints        Int? @map("max_hit_points")
+  currentSanity       Int? @map("current_sanity")
+  maxSanity           Int? @map("max_sanity")
+  currentStressPoints Int? @map("current_stress_points")
+  maxStressPoints     Int? @map("max_stress_points")
+
+
+  attributes CharacterAttributes[]
+  skills     CharacterSkills[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+
+  @@map("characters")
+}
+
+model Attribute {
+  id String @id @default(uuid())
+
+  name        String?
+  description String?
+
+  characters CharacterAttributes[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updared_at")
+
+  @@map("attributes")
+}
+
+model CharacterAttributes {
+  character   Character @relation(fields: [characterId], references: [id])
+  characterId String
+
+  attribute   Attribute @relation(fields: [attributeId], references: [id])
+  attributeId String
+
+  name  String?
+  value String  @default("0")
+
+  @@id([characterId, attributeId])
+  @@map("character_attributes")
+}
+
+model Skill {
+  id String @id @default(uuid())
+
+  name        String?
+  description String?
+
+  characters CharacterSkills[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updared_at")
+
+  @@map("skills")
+}
+
+model CharacterSkills {
+  character   Character @relation(fields: [characterId], references: [id])
+  characterId String
+
+  skill   Skill  @relation(fields: [skillId], references: [id])
+  skillId String
+
+  name  String?
+  value String  @default("0")
+
+  @@id([characterId, skillId])
+  @@map("character_skills")
+}
