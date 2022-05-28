@@ -13,21 +13,17 @@ class ReadSkillController {
       id = req.body.id
     }
 
-    const skill: any[] = await readSkill.execute(id)
+    const skills: any[] = await readSkill.execute(id)
 
-    if (!skill) {
+    if (!skills) {
       return res.status(404).send({ message: 'Skills not found' })
     }
 
-    if (skill.length === 0) {
+    if (skills.length === 0) {
       return res.status(200).send({ message: 'No skills found' })
     }
 
-    if (skill.length === 1) {
-      return res.status(200).send({ skill })
-    }
-
-    return res.status(200).send({ skills: skill })
+    return res.status(200).send({ skills })
   }
 }
 

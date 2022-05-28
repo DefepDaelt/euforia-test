@@ -13,21 +13,17 @@ class ReadAttributeController {
       id = req.body.id
     }
 
-    const character: any[] = await readAttribute.execute(id)
+    const attributes: any[] = await readAttribute.execute(id)
 
-    if (!character) {
+    if (!attributes) {
       return res.status(404).send({ message: 'Attributes not found' })
     }
 
-    if (character.length === 0) {
+    if (attributes.length === 0) {
       return res.status(200).send({ message: 'No attributes found' })
     }
 
-    if (character.length === 1) {
-      return res.status(200).send({ character })
-    }
-
-    return res.status(200).send({ attributes: character })
+    return res.status(200).send({ attributes })
   }
 }
 
