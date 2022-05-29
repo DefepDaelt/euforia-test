@@ -6,7 +6,7 @@ class UpdateCharacterController {
     try {
       req.body.id = req.params.id
       await updateCharacter.execute(req.body)
-      return res.status(400).send({ message: 'Success: Character updated' })
+      return res.status(200).send({ message: 'Success: Character updated' })
     } catch (err) {
       return res.status(400).send({ message: 'Faild: Character not updeted' })
     }

@@ -6,7 +6,7 @@ class UpdateAttributeController {
     try {
       req.body.id = req.params.id
       await updateAttribute.execute(req.body)
-      return res.status(400).send({ message: 'Success: Attribute updated' })
+      return res.status(200).send({ message: 'Success: Attribute updated' })
     } catch (err) {
       return res.status(400).send({ message: 'Faild: Attribute not updeted' })
     }

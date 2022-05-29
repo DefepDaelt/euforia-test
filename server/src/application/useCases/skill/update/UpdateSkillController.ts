@@ -6,7 +6,7 @@ class UpdateSkillController {
     try {
       req.body.id = req.params.id
       await updateSkill.execute(req.body)
-      return res.status(400).send({ message: 'Success: Skill updated' })
+      return res.status(200).send({ message: 'Success: Skill updated' })
     } catch (err) {
       return res.status(400).send({ message: 'Faild: Skill not updeted' })
     }

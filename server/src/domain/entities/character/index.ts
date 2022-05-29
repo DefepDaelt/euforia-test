@@ -3,6 +3,10 @@ import { Entities } from './../../../core/domain/Entities'
 type CharacterProps = {
   name: string,
   playerName: string,
+  origin: string,
+  class: string,
+  patent: string,
+  exposureLevel: string,
   currentHitPoints?: number,
   maxHitPoints?: number,
   currentSanity?: number,

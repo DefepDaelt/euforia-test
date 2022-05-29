@@ -9,6 +9,10 @@ export class CreateCharacterController {
       await createCharacter.execute({
         name: props.name,
         playerName: props.playerName,
+        origin: props.origin,
+        class: props.class,
+        patent: props.patent,
+        exposureLevel: props.exposureLevel,
         maxHitPoints: props.maxHitPoints,
         currentHitPoints: props.currentHitPoints || props.maxHitPoints,
         maxSanity: props.maxSanity,

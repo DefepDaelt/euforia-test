@@ -23,6 +23,10 @@ class UpdateCharacter {
       await this.characterRepository.update(await Character.create({
         name: newCharacter.name,
         playerName: newCharacter.playerName,
+        origin: newCharacter.origin,
+        class: newCharacter.class,
+        patent: newCharacter.patent,
+        exposureLevel: newCharacter.exposureLevel,
         maxHitPoints: newCharacter.maxHitPoints,
         currentHitPoints: newCharacter.currentHitPoints,
         maxSanity: newCharacter.maxSanity,

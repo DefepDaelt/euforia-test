@@ -16,6 +16,11 @@ model Character {
   playerName String? @map("player_name")
   name       String
 
+  origin        String?
+  class         String?
+  patent        String?
+  exposureLevel String? @map("exposure_level")
+
   currentHitPoints    Int? @map("current_hit_points")
   maxHitPoints        Int? @map("max_hit_points")
   currentSanity       Int? @map("current_sanity")
